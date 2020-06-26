@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>TODO Application</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<style type="text/css">
+		body{
+			background-color: #638C88;
+		}
+		.center-column{
+			width: 600px;
+			margin: 20px auto;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 3px;
+			box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+		}
+		input{
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 3px solid #555;
+		}
+
+		textarea{
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 3px solid #555;
+				}
+
+		.item-row{
+			background-color: #906abd;
+			margin: 10px;
+			padding: 20px;
+			border-radius: 3px;
+			color: #fff;
+			font-size: 16px;
+			box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+		}
+
+		table {
+			border: 5px solid black;
+			border-collapse: collapse;
+			/*background-color: white;*/
+			background-color: #d9ffd9;
+		}
+		tr, th, td {
+			border: 3px solid black;
+			border-collapse: collapse;
+			padding: 5px;
+			text-align: left;   
+			}
+
+		
+	</style>
+<body  background="http://orig11.deviantart.net/20eb/f/2015/030/6/f/_minflat__dark_material_design_wallpaper__4k__by_dakoder-d8fjqzu.jpg">
+
+<table align="center" border="1" style="width:800px">
+<h1> Show All Employess Details Table</h1>
+
+<tr>
+	<th>Name</th><th>Email</th><th>Contact</th><th>Salary</th><th>Address</th><th>Update</th><th>Delete</th>
+</tr>
+	
+	{% for i in tasks %}
+	<tr>
+
+		<td>{{i.name}}</td>		
+		<td>{{i.email}}</td>
+		<td>{{i.contact}}</td>
+		<td>{{i.salary}}</td>
+		<td>{{i.address}}</td>
+		<td><a href="{% url 'update' i.id %}" class="btn btn-sm btn-info">Update</a></td>
+<td><a href="{% url 'delete' i.id %}" class="btn btn-sm btn-danger">Delete</a></td>
+</tr>
+
+	{% endfor %}
+
+
+</table>
+</body>
+
+
+<!-- 	<div class="center-column">
+		
+		<form method="post">
+			{% csrf_token %}
+			{{form}}<br>
+			<input type="submit" name="" class="btn btn-sm btn-primary">
+
+		</form>
+
+		{% for task in tasks %}
+		<div class="item-row">
+<a href="{% url 'update' task.id %}" class="btn btn-sm btn-info">Update</a>
+<a href="{% url 'delete' task.id %}" class="btn btn-sm btn-danger">Delete</a>
+
+
+		{% if task.complete == True %}
+		<strike>{{task.name}} {{task.email}} {{task.address}} {{task.contact}}{{task.salary}}</strike>
+		{% else %}
+		<span>{{task.name}} {{task.email}} {{task.address}} {{task.contact}}{{task.salary}}</span>
+		{% endif %}
+		<br>
+		</div>
+
+		{% endfor%}
+
+
+	</div> -->
+
+</body>
+</html>
